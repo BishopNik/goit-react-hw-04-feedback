@@ -1,5 +1,6 @@
 /** @format */
 
+import PropTypes from 'prop-types';
 import './style.css';
 
 function FeedbackOptions({ valueButtons, onLeaveFeedback }) {
@@ -26,5 +27,10 @@ function FeedbackOptions({ valueButtons, onLeaveFeedback }) {
 		</div>
 	);
 }
+
+FeedbackOptions.propTypes = {
+	valueButtons: PropTypes.arrayOf(PropTypes.string).isRequired,
+	onLeaveFeedback: PropTypes.func.isRequired,
+};
 
 export default FeedbackOptions;

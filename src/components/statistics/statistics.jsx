@@ -1,5 +1,6 @@
 /** @format */
 
+import PropTypes from 'prop-types';
 import './style.css';
 
 function Statictics({ goodValue, neutralValue, badValue }) {
@@ -16,5 +17,11 @@ function Statictics({ goodValue, neutralValue, badValue }) {
 		</ul>
 	);
 }
+
+Statictics.propTypes = {
+	goodValue: PropTypes.number.isRequired,
+	neutralValue: PropTypes.number.isRequired,
+	badValue: PropTypes.number.isRequired,
+};
 
 export default Statictics;
