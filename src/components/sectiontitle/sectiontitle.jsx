@@ -3,7 +3,7 @@
 import PropTypes from 'prop-types';
 import './style.css';
 
-function SectionRendering({ title, children }) {
+function SectionTitle({ title, children }) {
 	return (
 		<section className='section'>
 			<h3 className='title'>{title}</h3>
@@ -12,9 +12,9 @@ function SectionRendering({ title, children }) {
 	);
 }
 
-SectionRendering.propTypes = {
+SectionTitle.propTypes = {
 	title: PropTypes.string.isRequired,
 	children: PropTypes.node.isRequired,
 };
 
-export default SectionRendering;
+export default SectionTitle;

@@ -2,8 +2,8 @@
 
 import Statictics from './statistics';
 import FeedbackOptions from './feedbackoptions';
-import SectionRendering from './rendercomponent/sectiontitle';
-import Notification from './rendercomponent/notification';
+import SectionTitle from './sectiontitle/sectiontitle';
+import Notification from './notification/notification';
 import { useState } from 'react';
 
 function App() {
@@ -34,20 +34,32 @@ function App() {
 		}
 	};
 
-	const sumFeedback = good + neutral + bad;
+	const countTotalFeedback = () => {
+		return good + neutral + bad;
+	};
+
+	const countPositiveFeedbackPercentage = () => {
+		return Math.round((good * 100) / countTotalFeedback());
+	};
 
 	return (
 		<>
-			<SectionRendering title={SECTIONFIRST}>
+			<SectionTitle title={SECTIONFIRST}>
 				<FeedbackOptions valueButtons={buttons} onLeaveFeedback={handlerChangeFeedback} />
-			</SectionRendering>
-			<SectionRendering title={SECTIONSECOND}>
-				{sumFeedback ? (
-					<Statictics goodValue={good} neutralValue={neutral} badValue={bad} />
+			</SectionTitle>
+			<SectionTitle title={SECTIONSECOND}>
+				{countTotalFeedback() ? (
+					<Statictics
+						goodValue={good}
+						neutralValue={neutral}
+						badValue={bad}
+						sum={countTotalFeedback()}
+						positive={countPositiveFeedbackPercentage()}
+					/>
 				) : (
 					<Notification />
 				)}
-			</SectionRendering>
+			</SectionTitle>
 		</>
 	);
 }
